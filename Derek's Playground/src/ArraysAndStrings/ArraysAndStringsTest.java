@@ -13,7 +13,8 @@ class ArraysAndStringsTest {
 		assertFalse(ArraysAndStrings.IsUnique("abcdega"));
 	}
 	
-	@Test void testCheckPermutation() {
+	@Test 
+	void testCheckPermutation() {
 		assertTrue(ArraysAndStrings.CheckPermutation("APPLE", "APPLE"));
 		assertTrue(ArraysAndStrings.CheckPermutation("APPLE", "ELPPA"));
 		assertTrue(ArraysAndStrings.CheckPermutation("APPLE", "ALPPE"));
@@ -27,4 +28,14 @@ class ArraysAndStringsTest {
 		assertFalse(ArraysAndStrings.CheckPermutation("APPLE", "AAAAA"));
 		assertFalse(ArraysAndStrings.CheckPermutation("APPLE", "APPLE "));
 	}
+	
+	@Test
+	void testURLify() {
+		assertEquals("Mr%20John%20Smith", ArraysAndStrings.URLify(("Mr John Smith    ").toCharArray(), 13));
+		assertEquals("Mr%20John%20Smith%20", ArraysAndStrings.URLify(("Mr John Smith       ").toCharArray(), 14));
+		assertEquals("Facebook%20Is%20Selling%20Your%20Information%20To%20The%20Government", ArraysAndStrings.URLify(("Facebook Is Selling Your Information To The Government              ").toCharArray(), 54));
+		
+		assertNotEquals("Mr%20John%20Smith%20", ArraysAndStrings.URLify(("Mr John Smith    ").toCharArray(), 13));
+	}
+	
 }

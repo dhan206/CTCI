@@ -8,6 +8,8 @@ public class ArraysAndStrings {
 		System.out.println("[IsUnique] Expected FALSE: " + IsUnique("abcda"));
 		System.out.println("[CheckPermutation] Expected TRUE: " + CheckPermutation("APPLE", "EPLPA"));
 		System.out.println("[CheckPermutation] Expected FALSE: " + CheckPermutation("APPLE", "EPLPE"));
+		System.out.println("[URLify] input: \'Mr John Smith    \', output: " + URLify(("Mr John Smith    ").toCharArray(), 13));
+//		System.out.println("[URLify] Expected FALSE: " + CheckPermutation("APPLE", "EPLPE"));
 	}
 	
 	// #1.1
@@ -49,6 +51,37 @@ public class ArraysAndStrings {
 		}
 		
 		return true;
+	}
+	
+	// #1.3
+	// Question: Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient
+	// 			space at the end to hold the additional characters, and that you are given the "true" length of the string.
+	//			(Note: if implementing in Java, please use a character array so that you can perform this operation in place.)
+	// Assumption: 
+	// Time complexity: O(n), loop through string twice, first time to get spaces and second time to build the URL string
+	// Space complexity: O(1) (i think?) because we are performing the operation in place, so we aren't initiating any other data structures
+	public static String URLify(char[] s, int length) {
+		int numSpaces = 0;
+		for (int i = 0; i < length; i++) {
+			if (s[i] == ' ') {
+				numSpaces++;
+			}
+		}
+		
+		int newLength = length - numSpaces + (numSpaces * 3);
+		for (int i = length - 1; i >= 0; i--) {
+			if (s[i] == ' ') {
+				s[newLength - 1] = '0';
+				s[newLength - 2] = '2';
+				s[newLength - 3] = '%';
+				newLength -= 3;
+			} else {
+				s[newLength - 1] = s[i];
+				newLength -= 1;
+			}
+		}
+		
+		return new String(s);
 	}
 	
 //	// #
