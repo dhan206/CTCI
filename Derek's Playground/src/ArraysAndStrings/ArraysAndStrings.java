@@ -37,17 +37,24 @@ public class ArraysAndStrings {
 	public static boolean CheckPermutation(String s1, String s2) {
 		if (s1.length() != s2.length()) return false;
 		
-		List<Character> list_of_char = new ArrayList<Character>();
+		HashMap<Character, Integer> char_map = new HashMap<Character, Integer>();
 		for (char c : s1.toCharArray()) { // puts s1 into a character array
-			list_of_char.add(c);
+			char_map.merge(c, 1, Integer::sum); // initiates to 1 if key does not exist, increments by 1 if key exists
 		}
 		
 		for (int i = 0; i < s2.length(); i++) { // loops over s2 and removes characters from s1
 			char currChar = s2.charAt(i);
-			if (!list_of_char.contains(currChar)) return false; // false if character isn't in s1
-			list_of_char.remove(new Character(currChar)); // remove char from s1 because its already been "seen"
+			if (!char_map.containsKey(currChar) || char_map.get(currChar) == 0) return false;
+			char_map.put(currChar, char_map.get(currChar) - 1);
 		}
 		
 		return true;
 	}
+	
+//	// #
+//	// Question:
+//	// Assumption:
+//	// Time complexity:
+//	// Space complexity:
+//	public static
 }
