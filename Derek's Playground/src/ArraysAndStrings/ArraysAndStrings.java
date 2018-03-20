@@ -1,3 +1,4 @@
+package ArraysAndStrings;
 import java.util.*;
 
 // Page 90
@@ -35,15 +36,18 @@ public class ArraysAndStrings {
 	// Space complexity: O(n) because it must store s1 into an ArrayList for comparison
 	public static boolean CheckPermutation(String s1, String s2) {
 		if (s1.length() != s2.length()) return false;
+		
 		List<Character> list_of_char = new ArrayList<Character>();
 		for (char c : s1.toCharArray()) { // puts s1 into a character array
 			list_of_char.add(c);
 		}
+		
 		for (int i = 0; i < s2.length(); i++) { // loops over s2 and removes characters from s1
 			char currChar = s2.charAt(i);
 			if (!list_of_char.contains(currChar)) return false; // false if character isn't in s1
 			list_of_char.remove(new Character(currChar)); // remove char from s1 because its already been "seen"
 		}
+		
 		return true;
 	}
 }

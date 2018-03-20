@@ -1,3 +1,4 @@
+package ArraysAndStrings;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.function.BooleanSupplier;
@@ -25,6 +26,5 @@ class ArraysAndStringsTest {
 		assertFalse(ArraysAndStrings.CheckPermutation("APPLE", "APLE"));
 		assertFalse(ArraysAndStrings.CheckPermutation("APPLE", "AAAAA"));
 		assertFalse(ArraysAndStrings.CheckPermutation("APPLE", "APPLE "));
-		
 	}
 }
