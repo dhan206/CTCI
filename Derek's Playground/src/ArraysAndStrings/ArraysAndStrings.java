@@ -4,22 +4,6 @@ import java.util.*;
 // Page 90
 public class ArraysAndStrings {
 	public static void main(String[] args) {
-		// #1.1 IsUnique
-//		System.out.println("[IsUnique] Expected TRUE: " + IsUnique("abcde"));
-//		System.out.println("[IsUnique] Expected FALSE: " + IsUnique("abcda"));
-		
-		// #1.2 CheckPermutation
-//		System.out.println("[CheckPermutation] Expected TRUE: " + CheckPermutation("APPLE", "EPLPA"));
-//		System.out.println("[CheckPermutation] Expected FALSE: " + CheckPermutation("APPLE", "EPLPE"));
-		
-		// #1.3 URLify
-//		System.out.println("[URLify] input: \'Mr John Smith    \', output: " + URLify(("Mr John Smith    ").toCharArray(), 13));
-		
-		// #1.4 IsPalindromePermutation
-//		System.out.println("[IsPalindromePermutation] Expected TRUE: " + IsPalindromePermutation("Tact Coa"));
-//		System.out.println("[IsPalindromePermutation] Expected TRUE: " + IsPalindromePermutation("Tact Ca"));
-//		System.out.println("[IsPalindromePermutation] Expected TRUE: " + IsPalindromePermutation("Tact CoaO"));
-//		System.out.println("[IsPalindromePermutation] Expected FALSE: " + IsPalindromePermutation("Tact Coae"));
 		
 	}
 	
@@ -103,7 +87,7 @@ public class ArraysAndStrings {
 	//		a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters.
 	//		the palindrome does not need to be limited to just dictionary words.
 	// Assumption: All characters in string are ASCII. Palindrome letters come in pairs unless there is an odd amount
-	//		of letters in the string. Case-insensitive.
+	//		of letters in the string, allowing for one instance of an odd amount of one letter. Case-insensitive.
 	// Time complexity: O(n) where n is length of the string because it is looped over once 
 	//		to collect the character counts
 	// Space complexity: O(1) because only need an int array of size 128 each time
@@ -131,7 +115,44 @@ public class ArraysAndStrings {
 				}
 			}
 		}
+		
 		return true;
+	}
+	
+	// #1.5
+	// Question: There are three types of edits that can be performed on strings; insert a character, remove a 
+	//		character, or replace a character. Given two strings, write a function to check if they are one 
+	//		edit (or zero edits) away.
+	// Assumption: 1) difference in length can be at most 1, 2) they are one away if the two strings are equal,
+	//		3) insert is the reciprocal of delete, can be handled together, 4) replace condition will have same length
+	// Time complexity: O(n) where n is length of longer string
+	// Space complexity: O(1)
+	public static boolean OneAway(String s1, String s2) {
+		if (s1.equals(s2)) return true;
+		if (Math.abs(s1.length() - s2.length()) > 1) return false;
+		
+		int difference = 0;
+		s1 = s1.toLowerCase();
+		s2 = s2.toLowerCase();
+		if (s1.length() == s2.length()) { // replace
+			for (int i = 0; i < s1.length(); i++) {
+				if (s1.charAt(i) != s2.charAt(i)) {
+					difference++;
+				}
+			}
+		} else { // insert/delete			
+			String longWord = s1.length() > s2.length() ? s1 : s2;
+			String shortWord = s1.length() < s2.length() ? s1 : s2;
+			int longIndex, shortIndex;
+			for (shortIndex = 0, longIndex = 0; shortIndex < shortWord.length(); shortIndex++, longIndex++) {
+				if (shortWord.charAt(shortIndex) != longWord.charAt(longIndex)) {
+					longIndex++;
+					difference++;
+				}
+			}
+		}
+		
+		return difference <= 1;
 	}
 	
 //	// #

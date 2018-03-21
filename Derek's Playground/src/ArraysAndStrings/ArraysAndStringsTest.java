@@ -48,4 +48,13 @@ class ArraysAndStringsTest {
 		assertFalse(ArraysAndStrings.IsPalindromePermutation("racecars"));
 	}
 	
+	@Test
+	void testOneAway() {
+		assertTrue(ArraysAndStrings.OneAway("pale", "ple"));
+		assertTrue(ArraysAndStrings.OneAway("pales", "pale"));
+		assertTrue(ArraysAndStrings.OneAway("pale", "bale"));
+		assertFalse(ArraysAndStrings.OneAway("pale", "bake"));
+		assertFalse(ArraysAndStrings.OneAway("pool", "polo"));
+		assertFalse(ArraysAndStrings.OneAway("pool", "polls"));
+	}
 }
