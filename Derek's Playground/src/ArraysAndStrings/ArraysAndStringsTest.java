@@ -38,4 +38,14 @@ class ArraysAndStringsTest {
 		assertNotEquals("Mr%20John%20Smith%20", ArraysAndStrings.URLify(("Mr John Smith    ").toCharArray(), 13));
 	}
 	
+	@Test
+	void testIsPalindromePermutation() {
+		assertTrue(ArraysAndStrings.IsPalindromePermutation("racecar"));
+		assertTrue(ArraysAndStrings.IsPalindromePermutation("Tact Coa"));
+		assertTrue(ArraysAndStrings.IsPalindromePermutation("Tact Ca"));
+		assertTrue(ArraysAndStrings.IsPalindromePermutation("Tact CoaO"));
+		assertFalse(ArraysAndStrings.IsPalindromePermutation("Tact Coae"));
+		assertFalse(ArraysAndStrings.IsPalindromePermutation("racecars"));
+	}
+	
 }
