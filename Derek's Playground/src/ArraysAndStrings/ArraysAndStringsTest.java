@@ -57,4 +57,11 @@ class ArraysAndStringsTest {
 		assertFalse(ArraysAndStrings.OneAway("pool", "polo"));
 		assertFalse(ArraysAndStrings.OneAway("pool", "polls"));
 	}
+	
+	@Test
+	void testStringCompression() {
+		assertEquals("a2b1c5a3", ArraysAndStrings.StringCompression("aabcccccaaa"));
+		assertEquals("a1A1b1c5a3", ArraysAndStrings.StringCompression("aAbcccccaaa"));
+		assertEquals("abcdefghijk", ArraysAndStrings.StringCompression("abcdefghijk"));		
+	}
 }
