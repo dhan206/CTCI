@@ -24,13 +24,13 @@ class LinkedListsTest {
 		assertEquals("[0]->[0]->[0]->[1]->[1]->[2]->[2]->[3]->[3]->[4]->[4]", 
 				head.toString());
 		head = LinkedLists.removeDuplicates(head);
-		assertEquals("[0]->[1]->[2]->[3]->[4]->[4]", 
+		assertEquals("[0]->[1]->[2]->[3]->[4]", 
 				head.toString());
 		
 		assertEquals("[0]->[0]->[0]->[1]->[1]->[2]->[2]->[3]->[3]->[4]->[4]", 
 				cloneOfHead.toString());
 		cloneOfHead = LinkedLists.removeDuplicatesFollowUp(cloneOfHead);
-		assertEquals("[0]->[1]->[2]->[3]->[4]->[4]", 
+		assertEquals("[0]->[1]->[2]->[3]->[4]", 
 				cloneOfHead.toString());
 	}
 }

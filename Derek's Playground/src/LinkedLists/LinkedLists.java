@@ -58,7 +58,7 @@ public class LinkedLists {
 		HashSet<Integer> set = new HashSet<Integer>();
 		Node<Integer> current = head;
 		Node<Integer> previous = null;
-		while(current.next != null) {
+		while(current != null) {
 			if(set.contains(current.data)) {
 				previous.next = current.next;
 			} else {
@@ -79,10 +79,10 @@ public class LinkedLists {
 	// Space complexity: O(1)
 	public static Node<Integer> removeDuplicatesFollowUp(Node head) {
 		Node<Integer> currentOutside = head;
-		while(currentOutside.next != null) {
+		while(currentOutside != null) {
 			Node<Integer> previousInside = currentOutside;
 			Node<Integer> currentInside = currentOutside.next;
-			while(currentInside.next != null) {
+			while(currentInside != null) {
 				if (currentOutside.data == currentInside.data) {
 					previousInside.next = currentInside.next;
 				} else {
