@@ -77,7 +77,7 @@ public class LinkedLists {
 	//			structures. To satisfy the constraint the space complexity must be constant.
 	// Time complexity: O(n^2) I think, see: http://jwilson.coe.uga.edu/EMAT6680Fa2013/Hendricks/Essay%202/Essay2.html
 	// Space complexity: O(1)
-	public static Node<Integer> removeDuplicatesFollowUp(Node head) {
+	public static Node<Integer> removeDuplicatesFollowUp(Node<Integer> head) {
 		Node<Integer> currentOutside = head;
 		while(currentOutside != null) {
 			Node<Integer> previousInside = currentOutside;
@@ -93,6 +93,28 @@ public class LinkedLists {
 			currentOutside = currentOutside.next;
 		}
 		return head;
+	}
+	
+	// #2.2
+	// Question: Implement an algorithm to find the kth to last element of a singly linked list
+	// Assumption: Since it is a singly linked list, we can only go forward (.next), 
+	//				"1st to last" is the last element, values in linked list are char
+	// Time complexity: O(n) runner must traverse through entire linked list once
+	// Space complexity: O(1) always two 'pointers', runner and finder
+	public static char returnKthToLast(Node<Character> head, int k) {
+		Node<Character> runner = head;
+		Node<Character> finder = head;
+		for(int i = 0; i < k; i++) {
+			if (runner == null) {
+				return '\u0000'; // empty null character
+			}
+			runner = runner.next;
+		}
+		while (runner != null) {
+			runner = runner.next;
+			finder = finder.next;
+		}
+		return finder.data;
 	}
 	
 //	// #
