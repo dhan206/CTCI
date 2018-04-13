@@ -49,4 +49,19 @@ class LinkedListsTest {
 		assertEquals('E', LinkedLists.returnKthToLast(head, 1));
 		assertEquals('\u0000', LinkedLists.returnKthToLast(head, 6));
 	}
+	
+	@Test
+	void tesRemoveFromMiddle() {
+		Node<Character> current = new LinkedLists.Node<Character>('A');
+		Node<Character> head = current;
+		current.next = new LinkedLists.Node<Character>('B');
+		Node<Character> middle = new LinkedLists.Node<Character>('C');
+		current.next.next = middle;
+		current.next.next.next = new LinkedLists.Node<Character>('D');
+		current.next.next.next.next = new LinkedLists.Node<Character>('E');
+		
+		assertEquals("[A]->[B]->[C]->[D]->[E]", head.toString());
+		head = LinkedLists.removeFromMiddle(head, middle);
+		assertEquals("[A]->[B]->[D]->[E]", head.toString());
+	}
 }

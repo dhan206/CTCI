@@ -117,6 +117,24 @@ public class LinkedLists {
 		return finder.data;
 	}
 	
+	// #2.3
+	// Question: Implement an algorithm to delete a node in the middle (ie, any node but the first and
+	//			last, not necessarily the exact middle) of a singly linked list, given only access to
+	//			to that node.
+	// Assumption:
+	//				NOTE: I do not modify, store or use head in any way besides returning 
+	//				it to show the final results.
+	// Time complexity: O(1)
+	// Space complexity: O(1)
+	public static Node<Character> removeFromMiddle(Node<Character> head, Node<Character> middle) {
+		if (middle != null && middle.next != null) {
+			// set everything to next node, basically skipping over the middle
+			middle.data = middle.next.data;
+			middle.next = middle.next.next;
+		}
+		return head;
+	}
+	
 //	// #
 //	// Question:
 //	// Assumption:
